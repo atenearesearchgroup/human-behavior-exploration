@@ -1,0 +1,465 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.meteck.org/files/ontologies/chibo.owl#"
+     xml:base="http://www.meteck.org/files/ontologies/chibo.owl"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.meteck.org/files/ontologies/chibo.owl">
+        <owl:imports rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl"/>
+        <rdfs:comment xml:lang="en">CPS-Human Interaction Behaviour Ontology</rdfs:comment>
+        <rdfs:comment xml:lang="en">Developed by Maria Keet</rdfs:comment>
+        <rdfs:comment xml:lang="en">With feedback from Jorg Kienzle, Lola Burgueno, and Shaukat Ali</rdfs:comment>
+        <owl:versionInfo xml:lang="en">DRAFT v1. Specifically: it is under construction, and being used in an experiment rather than already at the level of some sort of a definitive release v1.</owl:versionInfo>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/chibo.owl#detects -->
+
+    <owl:ObjectProperty rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#detects"/>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/chibo.owl#exhibitedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#exhibitedBy"/>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/chibo.owl#generates -->
+
+    <owl:ObjectProperty rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#generates"/>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/chibo.owl#inputTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#inputTo"/>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/chibo.owl#performs -->
+
+    <owl:ObjectProperty rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#performs"/>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/chibo.owl#requests -->
+
+    <owl:ObjectProperty rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#requests"/>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/chibo.owl#satisfies -->
+
+    <owl:ObjectProperty rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#satisfies">
+        <rdfs:subPropertyOf rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#immediate-relation-i"/>
+        <rdfs:comment>copied over from DnS</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/chibo.owl#setting-for -->
+
+    <owl:ObjectProperty rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#setting-for">
+        <rdfs:subPropertyOf rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#immediate-relation"/>
+        <rdfs:comment>copied over from DnS &quot;The relation between a situation and the entities that are referenced by it. (At least some of, or all) such entities must be classified by concepts defined by the description that the situation is supposed to satisfy.&quot;</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/chibo.owl#Action -->
+
+    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#Action">
+        <rdfs:subClassOf rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#accomplishment"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#performs"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:someValuesFrom rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#situation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#inputTo"/>
+                <owl:allValuesFrom rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#InputComponent"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#generates"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:allValuesFrom rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#BehaviouralOpportunity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">It&apos;s also an accomplishment in ExtendedDnS that was a bit large to import fully</rdfs:comment>
+        <rdfs:comment xml:lang="en">note: a behavioural opportunity may generate some action but need not, and v.v., an action may be motivated by a behavioural opportunity, but need not (it may be a resutl of the device-mediated stimulus, and morelikely so)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/chibo.owl#Activity -->
+
+    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#Activity">
+        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#Action"/>
+        <rdfs:comment xml:lang="en">copied over from DnS, just in case. Their description: &quot;In dependency terms, an activity is an action that is generically constantly dependent on a (at least partly) shared plan adopted by participants. This condition implies that an action must be sequenced by a task.Intuitively, activities are complex actions that are at least partly conventionally planned.&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/chibo.owl#Behaviour -->
+
+    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#Behaviour">
+        <rdfs:subClassOf rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#accomplishment"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#part"/>
+                <owl:someValuesFrom rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#Action"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#exhibitedBy"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#physical-object"/>
+                            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#social-object"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/chibo.owl#BehaviouralOpportunity -->
+
+    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#BehaviouralOpportunity">
+        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#Realizable"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/chibo.owl#CPS-HumanInteractionBehaviour -->
+
+    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#CPS-HumanInteractionBehaviour">
+        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#Behaviour"/>
+        <rdfs:comment xml:lang="en">the subclasses may well be useful also for situation beyond CPS-Human interaction, but we did not explore this and so do not make that grander claim.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/chibo.owl#ContradictoryBehaviour -->
+
+    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#ContradictoryBehaviour">
+        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#ExceptionalBehaviour"/>
+        <rdfs:comment xml:lang="en">{\em Contradictory behavior} includes a set of behaviors with their related actions where the human indicates one thing but does another. It may or may not be the case that the human should be doing it, and it may or may not be the case that that CPS was designed for it. For instance, a user may use the left indicator on a scooter but drive straight or turn right instead of turning left.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/chibo.owl#CyberPhysicalSystem -->
+
+    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#CyberPhysicalSystem">
+        <rdfs:subClassOf rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#physical-object"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#part"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#InputComponent"/>
+                            <rdf:Description rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#StimulusOutputComponent"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">note: it has more components as parts than only those, and the range needs to be updated if this ontology is extended</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/chibo.owl#DesiredBehaviour -->
+
+    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#DesiredBehaviour">
+        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#CPS-HumanInteractionBehaviour"/>
+        <rdfs:comment xml:lang="en">also known as intended behaviour</rdfs:comment>
+        <rdfs:comment xml:lang="en">{\em Desired/intended behavior} is that behavior that the CPS was designed to instill in the user. This is likely also expected and law-abiding, and typically involves `nudging&apos; of the user towards the desired behavior.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/chibo.owl#DeviceMediatedStimulus -->
+
+    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#DeviceMediatedStimulus">
+        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#Stimulus"/>
+        <rdfs:comment xml:lang="en">e.g., beeping, a message popping up trying to make the user do something</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/chibo.owl#EnvironmentalStimulus -->
+
+    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#EnvironmentalStimulus">
+        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#Stimulus"/>
+        <rdfs:comment xml:lang="en">e.g., for an ebike: car sirens, traffic lights, road congestion.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/chibo.owl#ExceptionalBehaviour -->
+
+    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#ExceptionalBehaviour">
+        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#CPS-HumanInteractionBehaviour"/>
+        <rdfs:comment xml:lang="en">also called uncommon behaviour</rdfs:comment>
+        <rdfs:comment xml:lang="en">{\em Uncommon and behavior} are those behaviors that are statistically in the `long tail’, but that the CPS designers have taken into account as valid `corner cases&apos; and where the CPS will operate within its safety standards.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/chibo.owl#ExpectedBehaviour -->
+
+    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#ExpectedBehaviour">
+        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#CPS-HumanInteractionBehaviour"/>
+        <owl:disjointWith rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#UnexpectedBehaviour"/>
+        <rdfs:comment xml:lang="en">{\em Expected behavior} concerns behavior (and corresponding execution of typical actions in concordance with that behavior) that are common and conform to what the CPS is designed for and deemed regular, safe, use of the CPS. For instance, one is expected to cycle with an e-bike.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/chibo.owl#Human -->
+
+    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#Human">
+        <rdfs:subClassOf rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#physical-object"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/chibo.owl#InputComponent -->
+
+    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#InputComponent">
+        <rdfs:subClassOf rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#physical-object"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/chibo.owl#LawabidingBehaviour -->
+
+    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#LawabidingBehaviour">
+        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#CPS-HumanInteractionBehaviour"/>
+        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#DesiredBehaviour"/>
+        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#ExpectedBehaviour"/>
+        <owl:disjointWith rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#LawbreakingBehaviour"/>
+        <rdfs:comment xml:lang="en">{\em Law-abiding behavior} as a type is orthogonal to the aforementioned types of behavior, as it may be either.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/chibo.owl#LawbreakingBehaviour -->
+
+    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#LawbreakingBehaviour">
+        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#CPS-HumanInteractionBehaviour"/>
+        <rdfs:comment xml:lang="en">{\em Law-breaking behavior} is likewise orthogonal, but may apply more likely to uncommon, unexpected, or contradictory, behavior, although  expected cannot be ruled out. For instance, riding through a red light on an empty road at night.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/chibo.owl#Realizable -->
+
+    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#Realizable">
+        <rdfs:subClassOf rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#non-physical-endurant"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/chibo.owl#Sensor -->
+
+    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#Sensor">
+        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#InputComponent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#detects"/>
+                <owl:allValuesFrom rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#Action"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/chibo.owl#Stimulus -->
+
+    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#Stimulus">
+        <rdfs:subClassOf rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#process"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/chibo.owl#StimulusOutputComponent -->
+
+    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#StimulusOutputComponent">
+        <rdfs:subClassOf rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#physical-object"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#generates"/>
+                <owl:someValuesFrom rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#DeviceMediatedStimulus"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#requests"/>
+                <owl:someValuesFrom rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#Action"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/chibo.owl#UnexpectedBehaviour -->
+
+    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#UnexpectedBehaviour">
+        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#CPS-HumanInteractionBehaviour"/>
+        <rdfs:comment xml:lang="en">{\em Unexpected behavior} are those behaviors that are statistically in the `long tail’ (and possibly reported on in news articles more often, possibly skewing an LLM trained on it), but which was not foreseen by its designers. The CPS may still operate according to specifications when processing the unexpected behavior.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/chibo.owl#User -->
+
+    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#User">
+        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#social-object"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#performs"/>
+                <owl:someValuesFrom rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#Action"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#exhibitedBy"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:someValuesFrom rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#Behaviour"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/chibo.owl#UserActionSituation -->
+
+    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#UserActionSituation">
+        <rdfs:subClassOf rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#event"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#part"/>
+                <owl:someValuesFrom rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#Action"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#participant"/>
+                <owl:someValuesFrom rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#User"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#participant"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#situation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">reified ternary relationship from the &apos;conceptualization stage&apos; model... for a user carrying out an action in some situation... and while oen might want &apos;part exaclty one 1 action&apos;, that conflicts with teh transitivity of part, so some, not exactly 1</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/chibo.owl#description -->
+
+    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#description">
+        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#social-object"/>
+        <rdfs:comment xml:lang="en">Fcopied over from DnS, &quot;A description is a social object which represents a conceptualization (e.g. a mental object or state), hence it is generically dependent on some agent and communicable. Descriptions define or use concepts or figures, are expressed by an information object and can be satisfied by situations. The typology of descriptions is still preliminary&quot;</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/chibo.owl#situation -->
+
+    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#situation">
+        <rdfs:subClassOf rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#social-object"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#satisfies"/>
+                <owl:someValuesFrom rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#description"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#setting-for"/>
+                <owl:someValuesFrom rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#particular"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#part"/>
+                <owl:allValuesFrom rdf:resource="http://www.meteck.org/files/ontologies/chibo.owl#situation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">copied over from DnS &quot;A situation is a social object that appears in the domain of an ontology only because there is a description whose components can &apos;carve up&apos; a view (setting) on that domain. A situation has to satisfy a description (see below for ways of defining the satisfies relation), and it has to be setting for at least one entity.In other words, it is the ontological counterpart (with due local differences or restrictions) of settings (situations from SC, contexts, episodes, states of affairs, structures, configurations, cases, etc.).A perdurant is usually the only mandatory constituent of a setting.Two descriptions of a same situation are possible, otherwise we would result in a solipsistic ontology. The time and space (and possibly other qualities) of a situation are the time and space of the perdurants in the setting.&quot;</rdfs:comment>
+        <rdfs:comment xml:lang="en">the axioms copied over are weaker, with just necessary conditions rather than diff, as DnS makes a distinction between ASO and NASO that we don&apos;t have here</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.meteck.org/files/ontologies/chibo.owl#social-object -->
+
+    <owl:Class rdf:about="http://www.meteck.org/files/ontologies/chibo.owl#social-object">
+        <rdfs:subClassOf rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#non-physical-object"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#generically-dependent-on"/>
+                <owl:someValuesFrom rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#physical-object"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">social object from extended DOLCE, and also includes role. also in DnS</rdfs:comment>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
